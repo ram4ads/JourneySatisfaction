@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bus Details</title>
+</head>
+<body>
+    <h1>Bus Details</h1>
+    <p>Service Provider: <span th:text="${bus.serviceProvider}">Provider</span></p>
+    <p>Service Number: <span th:text="${bus.serviceNumber}">Number</span></p>
+    <p>Registration Number: <span th:text="${bus.registrationNumber}">Reg Number</span></p>
+    <p>Capacity: <span th:text="${bus.capacity}">Capacity</span></p>
+    <a th:href="@{/buses}">Back to Bus List</a>
+</body>
+</html>

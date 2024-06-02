@@ -1,4 +1,4 @@
-package com.js.JourneySatisfaction.controller;
+package com.js.JourneySatisfaction.thymeleaf.controller;
 
 import com.js.JourneySatisfaction.model.User1;
 import com.js.JourneySatisfaction.service.UserService;
@@ -21,7 +21,7 @@ public class UserThymeleafController {
     public String getAllUsers(Model model) {
         List<User1> users = userService.getAllUsers();
         model.addAttribute("users", users);
-        return "user-list";
+        return "users/user-list";
     }
 
     @GetMapping("/{id}")
@@ -38,7 +38,7 @@ public class UserThymeleafController {
     @GetMapping("/new")
     public String createUserForm(Model model) {
         model.addAttribute("user", new User1());
-        return "create-user";
+        return "users/create-user";
     }
 
     @PostMapping
@@ -52,7 +52,7 @@ public class UserThymeleafController {
         Optional<User1> user = userService.getUserById(id);
         if (user.isPresent()) {
             model.addAttribute("user", user.get());
-            return "edit-user";
+            return "users/edit-user";
         } else {
             return "redirect:/users";
         }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Bus</title>
+</head>
+<body>
+    <h1>Edit Bus</h1>
+    <form th:action="@{/buses/{serviceProvider}/{serviceNumber}/{registrationNumber}(
+        serviceProvider=${bus.serviceProvider},
+        serviceNumber=${bus.serviceNumber},
+        registrationNumber=${bus.registrationNumber})}" method="post">
+        <input type="hidden" name="_method" value="put"/>
+        <label for="serviceProvider">Service Provider:</label>
+        <input type="text" id="serviceProvider" name="serviceProvider" th:value="${bus.serviceProvider}" required />
+        <br/>
+        <label for="serviceNumber">Service Number:</label>
+        <input type="text" id="serviceNumber" name="serviceNumber" th:value="${bus.serviceNumber}" required />
+        <br/>
+        <label for="registrationNumber">Registration Number:</label>
+        <input type="text" id="registrationNumber" name="registrationNumber" th:value="${bus.registrationNumber}" required />
+        <br/>
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="capacity" th:value="${bus.capacity}" required />
+        <br/>
+        <button type="submit">Update Bus</button>
+    </form>
+    <a th:href="@{/buses}">Back to Bus List</a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Journey List</title>
+</head>
+<body>
+    <h1>Journey List</h1>
+    <a th:href="@{/journeys/book}">Book New Journey</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Passenger</th>
+                <th>Bus</th>
+                <th>Ratings</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="journey : ${journeys}">
+                <td th:text="${journey.passenger.name}">Passenger</td>
+                <td th:text="${journey.bus.serviceProvider} + ' - ' + ${journey.bus.serviceNumber} + ' (' + ${journey.bus.registrationNumber} + ')'">Bus</td>
+                <td>
+                    <span th:if="${journey.rating != null}">
+                        Seat Quality: <span th:text="${journey.rating.seatQuality}">0</span><br/>
+                        Safe Driving: <span th:text="${journey.rating.safeDriving}">0</span><br/>
+                        Amenities: <span th:text="${journey.rating.amenities}">0</span><br/>
+                        Rest Room Stops: <span th:text="${journey.rating.restRoomStops}">0</span><br/>
+                        Luggage Safety: <span th:text="${journey.rating.luggageSafety}">0</span>
+                    </span>
+                    <span th:if="${journey.rating == null}">Not Rated</span>
+                </td>
+                <td>
+                    <a th:href="@{/journeys/rate/{id}(id=${journey.id})}" th:if="${journey.rating == null}">Rate</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

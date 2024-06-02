@@ -3,6 +3,7 @@ package com.js.JourneySatisfaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class JourneySatisfactionApplication {
 
@@ -10,4 +11,6 @@ public class JourneySatisfactionApplication {
 		SpringApplication.run(JourneySatisfactionApplication.class, args);
 	}
 
+	
+	
 }
