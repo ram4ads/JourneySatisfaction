@@ -72,4 +72,11 @@ public class Journey {
 	public void setDateOfJourney(LocalDate dateOfJourney) {
 		this.dateOfJourney = dateOfJourney;
 	}
+
+	@Override
+	public String toString() {
+		return "Journey [id=" + id + ", passenger=" + passenger + ", bus=" + bus + ", rating=" + rating
+				+ ", dateOfJourney=" + dateOfJourney + "]";
+	}
+	
 }

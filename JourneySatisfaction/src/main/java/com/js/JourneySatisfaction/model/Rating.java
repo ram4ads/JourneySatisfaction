@@ -51,4 +51,12 @@ public class Rating {
     public void setLuggageSafety(int luggageSafety) {
         this.luggageSafety = luggageSafety;
     }
+
+	@Override
+	public String toString() {
+		return "Rating [seatQuality=" + seatQuality + ", safeDriving=" + safeDriving + ", amenities=" + amenities
+				+ ", restRoomStops=" + restRoomStops + ", luggageSafety=" + luggageSafety + "]";
+	}
+    
+    
 }

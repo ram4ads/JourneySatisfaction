@@ -93,9 +93,23 @@ public class JourneyThymeleafController {
 
     // Handle rating form submission
     @PostMapping("/rate/{id}")
-    public String rateJourney(@PathVariable Long id, @ModelAttribute Rating rating) {
+    public String rateJourney(@PathVariable Long id,
+    		@RequestParam("seatQuality") int seatQualtiy,
+    		@RequestParam("safeDriving") int  safeDriving,
+    		@RequestParam("amenities") int  amenities,
+    		@RequestParam("restRoomStops") int  restRoomStops,
+    		@RequestParam("luggageSafety") int  luggageSafety) {
+    	
+    	Rating rating = new Rating();
+    	rating.setAmenities(amenities);
+    	rating.setLuggageSafety(luggageSafety);
+    	rating.setRestRoomStops(restRoomStops);
+    	rating.setSafeDriving(safeDriving);
+    	rating.setSeatQuality(seatQualtiy);
+    	
         Journey journey = journeyService.getJourneyById(id).orElseThrow(() -> new IllegalArgumentException("Invalid journey ID: " + id));
         journey.setRating(rating);
+        System.out.println(journey.toString());
         journeyService.saveJourney(journey);
         return "redirect:/journeys";
     }
