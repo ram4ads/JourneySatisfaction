@@ -1,4 +1,4 @@
-package com.js.JourneySatisfaction.thymeleaf.controller;
+package com.js.JourneySatisfaction.thymeleaf.controller1;
 
 import com.js.JourneySatisfaction.model.User1;
 import com.js.JourneySatisfaction.service.UserService;
@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/users2")
-public class UserThymeleafController {
+@RequestMapping("/users")
+public class UserThymeleafController2 {
 
     @Autowired
     private UserService userService;

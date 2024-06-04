@@ -1,43 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Book Journey</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Book a Journey</h1>
+    <div class="container mt-5">
+        <h1 class="mb-4">Book a Journey</h1>
+        
+        <form th:action="@{/journeys/book}" method="post" class="needs-validation" novalidate>
+            <!-- Select Bus -->
+            <div class="form-group">
+                <label for="busId">Select Bus:</label>
+                <select id="busId" name="busId" class="form-control" th:required="required">
+                    <option value="">Select Bus</option>
+                    <option th:each="bus : ${buses}" th:value="${bus.id}" th:text="${bus.id} + ' - ' + ${bus.serviceProvider} + ' - ' + ${bus.serviceNumber} + ' (' + ${bus.registrationNumber} + ')'"></option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select a bus.
+                </div>
+            </div>
+            
+            <!-- Passenger Details -->
+            <div class="form-group">
+                <label for="passengerName">Passenger Name:</label>
+                <input type="text" id="passengerName" name="passengerName" class="form-control" th:required="required"/>
+                <div class="invalid-feedback">
+                    Please provide a name.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passengerEmail">Passenger Email:</label>
+                <input type="email" id="passengerEmail" name="passengerEmail" class="form-control" th:required="required"/>
+                <div class="invalid-feedback">
+                    Please provide a valid email.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passengerPhoneNumber">Passenger Phone Number:</label>
+                <input type="text" id="passengerPhoneNumber" name="passengerPhoneNumber" class="form-control" th:required="required"/>
+                <div class="invalid-feedback">
+                    Please provide a phone number.
+                </div>
+            </div>
+            
+            <!-- Date of Journey -->
+            <div class="form-group">
+                <label for="dateOfJourney">Date of Journey:</label>
+                <input type="date" id="dateOfJourney" name="dateOfJourney" class="form-control" th:required="required"/>
+                <div class="invalid-feedback">
+                    Please select a date.
+                </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Book Journey</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
-    <form th:action="@{/journeys/book}" method="post">
-        <!-- Select Bus -->
-        <div>
-            <label for="busId">Select Bus:</label>
-            <select id="busId" name="busId" th:required="required">
-                <option value="">Select Bus</option>
-                <option th:each="bus : ${buses}" th:value="${bus.id}" th:text="${bus.id} + ' - ' + ${bus.serviceProvider} + ' - ' + ${bus.serviceNumber} + ' (' + ${bus.registrationNumber} + ')'"></option>
-            </select>
-        </div>
-        
-        <!-- Passenger Details -->
-        <div>
-            <label for="passengerName">Passenger Name:</label>
-            <input type="text" id="passengerName" name="passengerName" th:required="required"/>
-        </div>
-        <div>
-            <label for="passengerEmail">Passenger Email:</label>
-            <input type="email" id="passengerEmail" name="passengerEmail" th:required="required"/>
-        </div>
-        <div>
-            <label for="passengerPhoneNumber">Passenger Phone Number:</label>
-            <input type="text" id="passengerPhoneNumber" name="passengerPhoneNumber" th:required="required"/>
-        </div>
-        
-        <!-- Date of Journey -->
-        <div>
-            <label for="dateOfJourney">Date of Journey:</label>
-            <input type="date" id="dateOfJourney" name="dateOfJourney" th:required="required"/>
-        </div>
-        
-        <!-- Submit Button -->
-        <button type="submit">Book Journey</button>
-    </form>
+    <!-- Optional: Enable Bootstrap form validation -->
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 </html>

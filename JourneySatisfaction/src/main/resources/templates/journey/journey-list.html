@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Journey List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Journey List</h1>
-    <a th:href="@{/journeys/book}">Book New Journey</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Passenger</th>
-                <th>Bus</th>
-                <th>Ratings</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="journey : ${journeys}">
-                <td th:text="${journey.passenger.name}">Passenger</td>
-                <td th:text="${journey.bus.serviceProvider} + ' - ' + ${journey.bus.serviceNumber} + ' (' + ${journey.bus.registrationNumber} + ')'">Bus</td>
-                <td>
-                    <span th:if="${journey.rating != null}">
-                        Seat Quality: <span th:text="${journey.rating.seatQuality}">0</span><br/>
-                        Safe Driving: <span th:text="${journey.rating.safeDriving}">0</span><br/>
-                        Amenities: <span th:text="${journey.rating.amenities}">0</span><br/>
-                        Rest Room Stops: <span th:text="${journey.rating.restRoomStops}">0</span><br/>
-                        Luggage Safety: <span th:text="${journey.rating.luggageSafety}">0</span>
-                    </span>
-                    <span th:if="${journey.rating == null}">Not Rated</span>
-                </td>
-                <td>
-                    <a th:href="@{/journeys/rate/{id}(id=${journey.id})}" th:if="${journey.rating == null}">Rate</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container mt-5">
+        <h1 class="mb-4">Journey List</h1>
+        <a th:href="@{/journeys/book}" class="btn btn-primary mb-3">Book New Journey</a>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Passenger</th>
+                    <th>Bus</th>
+                    <th>Ratings</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="journey : ${journeys}">
+                    <td th:text="${journey.passenger.name}">Passenger</td>
+                    <td th:text="${journey.bus.serviceProvider} + ' - ' + ${journey.bus.serviceNumber} + ' (' + ${journey.bus.registrationNumber} + ')'">Bus</td>
+                    <td>
+                        <span th:if="${journey.rating != null}">
+                            Seat Quality: <span th:text="${journey.rating.seatQuality}">0</span><br/>
+                            Safe Driving: <span th:text="${journey.rating.safeDriving}">0</span><br/>
+                            Amenities: <span th:text="${journey.rating.amenities}">0</span><br/>
+                            Rest Room Stops: <span th:text="${journey.rating.restRoomStops}">0</span><br/>
+                            Luggage Safety: <span th:text="${journey.rating.luggageSafety}">0</span>
+                        </span>
+                        <span th:if="${journey.rating == null}">Not Rated</span>
+                    </td>
+                    <td>
+                        <a th:href="@{/journeys/rate/{id}(id=${journey.id})}" th:if="${journey.rating == null}" class="btn btn-info btn-sm">Rate</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

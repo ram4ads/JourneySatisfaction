@@ -1,4 +1,4 @@
-package com.js.JourneySatisfaction.thymeleaf.controller;
+package com.js.JourneySatisfaction.thymeleaf.controller1;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -22,8 +22,8 @@ import com.js.JourneySatisfaction.service.JourneyService;
 import com.js.JourneySatisfaction.service.PassengerService;
 
 @Controller
-@RequestMapping("/journeys2")
-public class JourneyThymeleafController {
+@RequestMapping("/journeys")
+public class JourneyThymeleafController2 {
 
     @Autowired
     private JourneyService journeyService;

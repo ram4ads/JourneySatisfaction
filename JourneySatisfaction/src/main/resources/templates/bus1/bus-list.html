@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bus List</title>
+</head>
+<body>
+    <h1>Bus List</h1>
+    <a th:href="@{/buses/new}">Add New Bus</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Service Provider</th>
+                <th>Service Number</th>
+                <th>Registration Number</th>
+                <th>Capacity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="bus : ${buses}">
+                <td th:text="${bus.serviceProvider}">Provider</td>
+                <td th:text="${bus.serviceNumber}">Number</td>
+                <td th:text="${bus.registrationNumber}">Reg Number</td>
+                <td th:text="${bus.capacity}">Capacity</td>
+                <td>
+                    <a th:href="@{/buses/{serviceProvider}/{serviceNumber}/{registrationNumber}(
+                        serviceProvider=${bus.serviceProvider},
+                        serviceNumber=${bus.serviceNumber},
+                        registrationNumber=${bus.registrationNumber})}">View</a>
+                    <a th:href="@{/buses/edit/{serviceProvider}/{serviceNumber}/{registrationNumber}(
+                        serviceProvider=${bus.serviceProvider},
+                        serviceNumber=${bus.serviceNumber},
+                        registrationNumber=${bus.registrationNumber})}">Edit</a>
+                    <form th:action="@{/buses/{serviceProvider}/{serviceNumber}/{registrationNumber}(
+                        serviceProvider=${bus.serviceProvider},
+                        serviceNumber=${bus.serviceNumber},
+                        registrationNumber=${bus.registrationNumber})}" method="post" th:onsubmit="return confirm('Are you sure?');">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

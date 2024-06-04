@@ -8,11 +8,11 @@ INSERT INTO passenger (id, name, email, phone_number) VALUES
 
 -- Insert buses
 INSERT INTO bus (id, service_provider, service_number, registration_number, capacity) VALUES 
-(1, 'Provider1', 'Service123', 'REG123', 50),
-(2, 'Provider2', 'Service456', 'REG456', 45),
-(3, 'Provider3', 'Service789', 'REG789', 40),
-(4, 'Provider1', 'Service101', 'REG101', 55),
-(5, 'Provider2', 'Service202', 'REG202', 60);
+(1, 'KSRTC', 'Service123', 'KS 12 QA 1234', 50),
+(2, 'TNRTC', 'Service456', 'TM 12 BA 1234', 45),
+(3, 'KRTC', 'Service789', 'KR 13 RQ 5766', 40),
+(4, 'APSRTCovider1', 'AP 31 EQ 3443', 'REG101', 55),
+(5, 'TGSRTC', 'TG 09 WQ 3243', 'REG202', 60);
 
 -- Insert journeys
 INSERT INTO journey (id, passenger_id, bus_id, date_of_journey) VALUES 

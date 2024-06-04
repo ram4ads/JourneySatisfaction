@@ -1,4 +1,4 @@
-package com.js.JourneySatisfaction.thymeleaf.controller;
+package com.js.JourneySatisfaction.thymeleaf.controller1;
  
 
 
@@ -13,8 +13,8 @@ import com.js.JourneySatisfaction.service.BusService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/buses2")
-public class BusThymeleafController {
+@RequestMapping("/buses")
+public class BusThymeleafController2 {
 
     @Autowired
     private BusService busService;
@@ -79,7 +79,7 @@ public class BusThymeleafController {
     }
 
     // Delete a bus
-    @PostMapping("/{serviceProvider}/{serviceNumber}/{registrationNumber}")
+    @PostMapping("/delete/{serviceProvider}/{serviceNumber}/{registrationNumber}")
     public String deleteBus(
             @PathVariable String serviceProvider,
             @PathVariable String serviceNumber,
@@ -87,7 +87,5 @@ public class BusThymeleafController {
         busService.deleteBus(serviceProvider, serviceNumber, registrationNumber);
         return "redirect:/buses";
     }
+    
 }
-
-
-

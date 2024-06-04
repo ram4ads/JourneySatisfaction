@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Journey</title>
+</head>
+<body>
+    <h1>Book a Journey</h1>
+    
+    <form th:action="@{/journeys/book}" method="post">
+        <!-- Select Bus -->
+        <div>
+            <label for="busId">Select Bus:</label>
+            <select id="busId" name="busId" th:required="required">
+                <option value="">Select Bus</option>
+                <option th:each="bus : ${buses}" th:value="${bus.id}" th:text="${bus.id} + ' - ' + ${bus.serviceProvider} + ' - ' + ${bus.serviceNumber} + ' (' + ${bus.registrationNumber} + ')'"></option>
+            </select>
+        </div>
+        
+        <!-- Passenger Details -->
+        <div>
+            <label for="passengerName">Passenger Name:</label>
+            <input type="text" id="passengerName" name="passengerName" th:required="required"/>
+        </div>
+        <div>
+            <label for="passengerEmail">Passenger Email:</label>
+            <input type="email" id="passengerEmail" name="passengerEmail" th:required="required"/>
+        </div>
+        <div>
+            <label for="passengerPhoneNumber">Passenger Phone Number:</label>
+            <input type="text" id="passengerPhoneNumber" name="passengerPhoneNumber" th:required="required"/>
+        </div>
+        
+        <!-- Date of Journey -->
+        <div>
+            <label for="dateOfJourney">Date of Journey:</label>
+            <input type="date" id="dateOfJourney" name="dateOfJourney" th:required="required"/>
+        </div>
+        
+        <!-- Submit Button -->
+        <button type="submit">Book Journey</button>
+    </form>
+</body>
+</html>

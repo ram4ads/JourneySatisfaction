@@ -23,7 +23,21 @@ public class Bus {
     private String serviceProvider;
     private String serviceNumber;
     private String registrationNumber;
-    private int capacity;
+    private String from;
+    private String destination;
+    public String getFrom() {
+		return from;
+	}
+	public void setFrom(String from) {
+		this.from = from;
+	}
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+	private int capacity;
 	public Long getId() {
 		return id;
 	}
@@ -57,7 +71,9 @@ public class Bus {
 	@Override
 	public String toString() {
 		return "Bus [id=" + id + ", serviceProvider=" + serviceProvider + ", serviceNumber=" + serviceNumber
-				+ ", registrationNumber=" + registrationNumber + ", capacity=" + capacity + "]";
+				+ ", registrationNumber=" + registrationNumber + ", from=" + from + ", destination=" + destination
+				+ ", capacity=" + capacity + "]";
 	}
+	
 	
 }

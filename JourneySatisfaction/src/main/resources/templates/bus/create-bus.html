@@ -1,25 +1,83 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add New Bus</title>
+    <meta charset="UTF-8">
+    <title>Add Bus</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Add New Bus</h1>
-    <form th:action="@{/buses}" method="post">
-        <label for="serviceProvider">Service Provider:</label>
-        <input type="text" id="serviceProvider" name="serviceProvider" required />
-        <br/>
-        <label for="serviceNumber">Service Number:</label>
-        <input type="text" id="serviceNumber" name="serviceNumber" required />
-        <br/>
-        <label for="registrationNumber">Registration Number:</label>
-        <input type="text" id="registrationNumber" name="registrationNumber" required />
-        <br/>
-        <label for="capacity">Capacity:</label>
-        <input type="number" id="capacity" name="capacity" required />
-        <br/>
-        <button type="submit">Add Bus</button>
-    </form>
-    <a th:href="@{/buses}">Back to Bus List</a>
+    <div class="container mt-5">
+        <h2>Add Bus</h2>
+        <form th:action="@{/buses}" method="post" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="serviceProvider">Service Provider</label>
+                <input type="text" class="form-control" id="serviceProvider" name="serviceProvider" required>
+                <div class="invalid-feedback">
+                    Please provide a service provider.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="serviceNumber">Service Number</label>
+                <input type="text" class="form-control" id="serviceNumber" name="serviceNumber" required>
+                <div class="invalid-feedback">
+                    Please provide a service number.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="registrationNumber">Registration Number</label>
+                <input type="text" class="form-control" id="registrationNumber" name="registrationNumber" required>
+                <div class="invalid-feedback">
+                    Please provide a registration number.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="from">From</label>
+                <input type="text" class="form-control" id="from" name="from" required>
+                <div class="invalid-feedback">
+                    Please provide the departure location.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" class="form-control" id="destination" name="destination" required>
+                <div class="invalid-feedback">
+                    Please provide the destination.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="capacity">Capacity</label>
+                <input type="number" class="form-control" id="capacity" name="capacity" required>
+                <div class="invalid-feedback">
+                    Please provide the capacity.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Bus</button>
+        </form>
+    </div>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Optional: Enable Bootstrap form validation -->
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 </html>
