@@ -14,7 +14,11 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Passenger</th>
-                    <th>Bus</th>
+                    <th>Service Provider</th>
+					<th>Service Number</th>
+					<th>Registration Number</th>
+					<th>From</th>
+					<th>To</th>
                     <th>Ratings</th>
                     <th>Actions</th>
                 </tr>
@@ -22,7 +26,12 @@
             <tbody>
                 <tr th:each="journey : ${journeys}">
                     <td th:text="${journey.passenger.name}">Passenger</td>
-                    <td th:text="${journey.bus.serviceProvider} + ' - ' + ${journey.bus.serviceNumber} + ' (' + ${journey.bus.registrationNumber} + ')'">Bus</td>
+<!--                    <td th:text="${journey.bus.serviceProvider} + ' - ' + ${journey.bus.serviceNumber} + ' (' + ${journey.bus.registrationNumber} + ')'">Bus</td>-->
+					<td th:text="${journey.bus.serviceProvider}">Service Provider</td>
+					<td th:text="${journey.bus.serviceProvider}">Service Number</td>
+					<td th:text="${journey.bus.registrationNumber}">Registration Number</td>
+					<td th:text="${journey.bus.origin}">From</td>
+					<td th:text="${journey.bus.destination}">To</td>
                     <td>
                         <span th:if="${journey.rating != null}">
                             Seat Quality: <span th:text="${journey.rating.seatQuality}">0</span><br/>

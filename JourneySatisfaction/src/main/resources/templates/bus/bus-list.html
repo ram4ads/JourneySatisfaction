@@ -17,6 +17,8 @@
                     <th>Service Number</th>
                     <th>Registration Number</th>
                     <th>Capacity</th>
+					<th>Origin</th>
+					<th>Destination</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -26,6 +28,8 @@
                     <td th:text="${bus.serviceNumber}">Number</td>
                     <td th:text="${bus.registrationNumber}">Reg Number</td>
                     <td th:text="${bus.capacity}">Capacity</td>
+					<td th:text="${bus.origin}">Origin</td>
+					<td th:text="${bus.destination}">Destination</td>
                     <td>
                         <a th:href="@{/buses/{serviceProvider}/{serviceNumber}/{registrationNumber}(
                             serviceProvider=${bus.serviceProvider},

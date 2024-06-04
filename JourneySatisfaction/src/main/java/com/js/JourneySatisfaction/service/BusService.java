@@ -12,4 +12,5 @@ public interface BusService {
     Bus createBus(Bus bus);
     Optional<Bus> updateBus(String serviceProvider, String serviceNumber, String registrationNumber, Bus bus);
     boolean deleteBus(String serviceProvider, String serviceNumber, String registrationNumber);
+    Optional<Bus> findLatestEntity();
 }

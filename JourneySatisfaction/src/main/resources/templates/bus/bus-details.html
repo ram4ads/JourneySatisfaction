@@ -15,7 +15,9 @@
                 <p class="card-text"><strong>Service Number:</strong> <span th:text="${bus.serviceNumber}">Number</span></p>
                 <p class="card-text"><strong>Registration Number:</strong> <span th:text="${bus.registrationNumber}">Reg Number</span></p>
                 <p class="card-text"><strong>Capacity:</strong> <span th:text="${bus.capacity}">Capacity</span></p>
-                <a th:href="@{/buses}" class="btn btn-primary">Back to Bus List</a>
+				<p class="card-text"><strong>Orgin:</strong> <span th:text="${bus.origin}">Orgin</span></p>
+				<p class="card-text"><strong>Destination:</strong> <span th:text="${bus.destination}">Destination</span></p>
+				<a th:href="@{/buses}" class="btn btn-primary">Back to Bus List</a>
             </div>
         </div>
     </div>

@@ -1,74 +1,96 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Edit Bus</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>Edit Bus</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Edit Bus</h1>
-        <form th:action="@{/buses/{serviceProvider}/{serviceNumber}/{registrationNumber}(
+	<div class="container mt-5">
+		<h1 class="mb-4">Edit Bus</h1>
+		<form th:action="@{/buses/edit1/{serviceProvider}/{serviceNumber}/{registrationNumber}(
             serviceProvider=${bus.serviceProvider},
             serviceNumber=${bus.serviceNumber},
             registrationNumber=${bus.registrationNumber})}" method="post" class="needs-validation" novalidate>
-            <input type="hidden" name="_method" value="put"/>
-            <div class="form-group">
-                <label for="serviceProvider">Service Provider</label>
-                <input type="text" class="form-control" id="serviceProvider" name="serviceProvider" th:value="${bus.serviceProvider}" required>
-                <div class="invalid-feedback">
-                    Please provide a service provider.
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="serviceNumber">Service Number</label>
-                <input type="text" class="form-control" id="serviceNumber" name="serviceNumber" th:value="${bus.serviceNumber}" required>
-                <div class="invalid-feedback">
-                    Please provide a service number.
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="registrationNumber">Registration Number</label>
-                <input type="text" class="form-control" id="registrationNumber" name="registrationNumber" th:value="${bus.registrationNumber}" required>
-                <div class="invalid-feedback">
-                    Please provide a registration number.
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="capacity">Capacity</label>
-                <input type="number" class="form-control" id="capacity" name="capacity" th:value="${bus.capacity}" required>
-                <div class="invalid-feedback">
-                    Please provide the capacity.
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Update Bus</button>
-        </form>
-        <a th:href="@{/buses}" class="btn btn-secondary mt-3">Back to Bus List</a>
-    </div>
+			<input type="hidden" name="_method" value="put" />
+			<div class="form-group">
+				<label for="serviceProvider">Service Provider</label>
+				<input type="text" class="form-control" id="serviceProvider" name="serviceProvider"
+					th:value="${bus.serviceProvider}" required>
+				<div class="invalid-feedback">
+					Please provide a service provider.
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="serviceNumber">Service Number</label>
+				<input type="text" class="form-control" id="serviceNumber" name="serviceNumber"
+					th:value="${bus.serviceNumber}" required>
+				<div class="invalid-feedback">
+					Please provide a service number.
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="registrationNumber">Registration Number</label>
+				<input type="text" class="form-control" id="registrationNumber" name="registrationNumber"
+					th:value="${bus.registrationNumber}" required>
+				<div class="invalid-feedback">
+					Please provide a registration number.
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="capacity">Capacity</label>
+				<input type="number" class="form-control" id="capacity" name="capacity" th:value="${bus.capacity}"
+					required>
+				<div class="invalid-feedback">
+					Please provide the capacity.
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="origin">Origin</label>
+				<input type="text" class="form-control" id="origin" name="origin" th:value="${bus.origin}">
+				<div class="invalid-feedback">
+					Please provide the starting location.
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="destination">Destination</label>
+				<input type="text" class="form-control" id="destination" name="destination" th:value="${bus.destination}">
+				<div class="invalid-feedback">
+					Please provide the destination.
+				</div>
+			</div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+			<button type="submit" class="btn btn-primary">Update Bus</button>
+		</form>
+		<a th:href="@{/buses}" class="btn btn-secondary mt-3">Back to Bus List</a>
+	</div>
 
-    <!-- Optional: Enable Bootstrap form validation -->
-    <script>
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                var forms = document.getElementsByClassName('needs-validation');
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<!-- Optional: Enable Bootstrap form validation -->
+	<script>
+		(function () {
+			'use strict';
+			window.addEventListener('load', function () {
+				var forms = document.getElementsByClassName('needs-validation');
+				var validation = Array.prototype.filter.call(forms, function (form) {
+					form.addEventListener('submit', function (event) {
+						if (form.checkValidity() === false) {
+							event.preventDefault();
+							event.stopPropagation();
+						}
+						form.classList.add('was-validated');
+					}, false);
+				});
+			}, false);
+		})();
+	</script>
 </body>
+
 </html>

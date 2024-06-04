@@ -38,7 +38,11 @@ public class BusServiceImpl implements BusService {
                     existingBus.setServiceProvider(bus.getServiceProvider());
                     existingBus.setServiceNumber(bus.getServiceNumber());
                     existingBus.setRegistrationNumber(bus.getRegistrationNumber());
+                    existingBus.setOrigin(bus.getOrigin());
+                    existingBus.setDestination(bus.getDestination());
                     existingBus.setCapacity(bus.getCapacity());
+                    System.out.println("-------------------------");
+                    System.out.println(existingBus);
                     return busRepository.save(existingBus);
                 });
     }
@@ -57,4 +61,9 @@ public class BusServiceImpl implements BusService {
 		// TODO Auto-generated method stub
 		return busRepository.findById(id);
 	}
+	
+	@Override
+    public Optional<Bus> findLatestEntity() {
+        return busRepository.findTopByOrderByIdDesc();
+    }
 }

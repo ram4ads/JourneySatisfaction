@@ -18,30 +18,18 @@ public class Bus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String serviceProvider;
     private String serviceNumber;
     private String registrationNumber;
-    private String from;
+    private String origin;
     private String destination;
-    public String getFrom() {
-		return from;
-	}
-	public void setFrom(String from) {
-		this.from = from;
-	}
-	public String getDestination() {
-		return destination;
-	}
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-	private int capacity;
-	public Long getId() {
+    private int capacity;
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getServiceProvider() {
@@ -62,6 +50,18 @@ public class Bus {
 	public void setRegistrationNumber(String registrationNumber) {
 		this.registrationNumber = registrationNumber;
 	}
+	public String getOrigin() {
+		return origin;
+	}
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
 	public int getCapacity() {
 		return capacity;
 	}
@@ -71,9 +71,8 @@ public class Bus {
 	@Override
 	public String toString() {
 		return "Bus [id=" + id + ", serviceProvider=" + serviceProvider + ", serviceNumber=" + serviceNumber
-				+ ", registrationNumber=" + registrationNumber + ", from=" + from + ", destination=" + destination
+				+ ", registrationNumber=" + registrationNumber + ", origin=" + origin + ", destination=" + destination
 				+ ", capacity=" + capacity + "]";
 	}
-	
-	
+   
 }

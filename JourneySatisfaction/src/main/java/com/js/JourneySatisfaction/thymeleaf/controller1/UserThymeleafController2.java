@@ -64,7 +64,7 @@ public class UserThymeleafController2 {
         return "redirect:/users";
     }
 
-    @PostMapping("/{id}/delete")
+    @PostMapping("/delete/{id}")
     public String deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return "redirect:/users";

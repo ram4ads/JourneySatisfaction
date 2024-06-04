@@ -11,6 +11,7 @@ import com.js.JourneySatisfaction.model.Bus;
 import com.js.JourneySatisfaction.service.BusService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/buses")
@@ -48,8 +49,15 @@ public class BusThymeleafController2 {
     }
 
     // Add a new bus
-    @PostMapping
+    @PostMapping("/createBus")
     public String createBus(@ModelAttribute com.js.JourneySatisfaction.model.Bus bus) {
+    	
+//    	Optional<Bus> b = busService.findLatestEntity();
+    	
+//    	System.out.println(b.get());
+//    	bus.setId(b.get().getId()+1);
+    	System.out.println("-------=-=-=-=-==---=-=================-------");
+    	System.out.println(bus);
         busService.createBus(bus);
         return "redirect:/buses";
     }
@@ -64,16 +72,19 @@ public class BusThymeleafController2 {
         Bus bus = busService.getBusByProviderServiceRegistration(serviceProvider, serviceNumber, registrationNumber)
                             .orElse(null);
         model.addAttribute("bus", bus);
+        
+        System.out.println("============rrr==========");
         return "bus/edit-bus";
     }
 
     // Update an existing bus
-    @PostMapping("/edit/{serviceProvider}/{serviceNumber}/{registrationNumber}")
+    @PostMapping("/edit1/{serviceProvider}/{serviceNumber}/{registrationNumber}")
     public String updateBus(
             @PathVariable String serviceProvider,
             @PathVariable String serviceNumber,
             @PathVariable String registrationNumber,
             @ModelAttribute Bus bus) {
+    	System.out.println(12345);
         busService.updateBus(serviceProvider, serviceNumber, registrationNumber, bus);
         return "redirect:/buses";
     }
